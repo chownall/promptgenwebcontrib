@@ -1,0 +1,160 @@
+id: 4
+name: "HTML + JavaScript + CSS Minimal"
+description: "Ultra minimal frontend development stack using pure HTML5, vanilla JavaScript, and CSS3. No frameworks, no build tools, no dependencies. Just the web fundamentals for simple, fast, and lightweight websites."
+category: Frontend
+
+technologies:
+  core:
+    - name: HTML5
+      version: "5.0"
+      category: Language
+    - name: JavaScript
+      version: ES2022
+      category: Language
+    - name: CSS3
+      version: "3.0"
+      category: Language
+
+setup:
+  prerequisites:
+    - "Modern web browser"
+    - "Text editor"
+    - "Local web server (optional)"
+  
+  installation:
+    - "Create project folder"
+    - "Create index.html"
+    - "Create style.css"
+    - "Create script.js"
+    - "Open in browser"
+  
+  configuration:
+    - filename: index.html
+      content: |
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Minimal Website</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <header>
+                <h1>Hello World</h1>
+            </header>
+            <main>
+                <p>This is a minimal website.</p>
+                <button id="clickMe">Click me</button>
+            </main>
+            <footer>
+                <p>&copy; 2024 Minimal Site</p>
+            </footer>
+            <script src="script.js"></script>
+        </body>
+        </html>
+      description: "Basic HTML structure"
+    
+    - filename: style.css
+      content: |
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Base styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header, main, footer {
+            margin: 20px 0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+      description: "Minimal CSS styling"
+    
+    - filename: script.js
+      content: |
+        // Minimal JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.getElementById('clickMe');
+            
+            button.addEventListener('click', function() {
+                alert('Hello from minimal JavaScript!');
+            });
+        });
+      description: "Minimal JavaScript functionality"
+
+use_cases:
+  - "Simple websites"
+  - "Landing pages"
+  - "Portfolios"
+  - "Learning projects"
+  - "Prototypes"
+  - "Static content"
+
+tags:
+  - html5
+  - javascript
+  - css3
+  - vanilla
+  - minimal
+  - lightweight
+  - no-framework
+  - frontend
+  - simple
+
+documentation:
+  official: "https://developer.mozilla.org/en-US/docs/Web"
+  html: "https://developer.mozilla.org/en-US/docs/Web/HTML"
+  css: "https://developer.mozilla.org/en-US/docs/Web/CSS"
+  javascript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+
+contributor:
+  name: Rivercode
+  email: expert@promptwebgen.com
+
+metadata:
+  rating: 4.9
+  review_count: 8
+  download_count: 320
+  is_paid: false
+  marketplace_price: 0
+  license: "MIT"
+  status: "Active"
+
+timestamps:
+  created_at: "2024-01-20T10:00:00Z"
+  updated_at: "2024-01-20T10:00:00Z"
