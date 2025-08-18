@@ -1,40 +1,30 @@
 # Tech Stacks Repository
 
-Ce dossier contient les tech stacks disponibles pour l'extension PromptWebGen, suivant un schéma standardisé basé sur les normes de l'industrie.
+This directory contains the tech stacks available for the PromptWebGen extension, following a standardized schema based on industry standards.
 
-## 📋 Formats supportés
+## 📋 YAML Format
 
-### 🟢 **YAML (Recommandé pour l'édition)**
-- **Plus facile à éditer** manuellement
-- **Syntaxe claire** et lisible
-- **Moins d'erreurs** de syntaxe
-- **Fichiers** : `*.yaml`
+All tech stacks are stored in YAML format for easy editing and maintenance:
 
-### 🔵 **JSON (Pour l'API)**
-- **Format standard** pour les APIs
-- **Validation automatique** avec le schéma
-- **Fichiers** : `*.json`
+### 🟢 **YAML (Recommended)**
+- **Easy to edit** manually
+- **Clear syntax** and readable
+- **Fewer syntax errors**
+- **Files**: `*.yaml`
 
-## 🔄 Conversion automatique
+## 📋 Standardized Schema
 
-Utilisez le script Python pour convertir YAML → JSON :
-```bash
-python convert-yaml-to-json.py stacks/*.yaml
-```
+Each tech stack follows a standardized schema with the following structure:
 
-## 📋 Schéma JSON Standardisé
+### Required structure:
+- **id**: Unique identifier
+- **name**: Readable stack name
+- **description**: Concise technical description
+- **category**: Category (Frontend/Backend/Full-Stack/Mobile/DevOps/Data/AI/ML)
+- **technologies**: Technologies structured by category
+- **setup**: Installation and configuration instructions
 
-Chaque tech stack suit le schéma défini dans `schema.json` qui respecte les standards suivants :
-
-### Structure obligatoire :
-- **id** : Identifiant unique
-- **name** : Nom lisible de la stack
-- **description** : Description technique concise
-- **category** : Catégorie (Frontend/Backend/Full-Stack/Mobile/DevOps/Data/AI/ML)
-- **technologies** : Technologies structurées par catégorie
-- **setup** : Instructions d'installation et configuration
-
-### Technologies structurées :
+### Structured technologies:
 ```yaml
 technologies:
   core:
@@ -46,7 +36,7 @@ technologies:
   quality: [...]
 ```
 
-### Setup automatisé :
+### Automated setup:
 ```yaml
 setup:
   prerequisites:
@@ -58,36 +48,36 @@ setup:
   configuration:
     - filename: "config.js"
       content: "// Configuration content"
-      description: "Description du fichier"
+      description: "File description"
 ```
 
-## 🚀 Ajout d'un nouveau tech stack
+## 🚀 Adding a new tech stack
 
-### Méthode recommandée (YAML) :
-1. **Copier le template** : `cp template.yaml ma-nouvelle-stack.yaml`
-2. **Éditer le fichier YAML** avec vos données
-3. **Convertir en JSON** : `python convert-yaml-to-json.py ma-nouvelle-stack.yaml`
-4. **Valider** que le JSON est conforme au schéma
+### Recommended method (YAML):
+1. **Copy the template**: `cp template.yaml my-new-stack.yaml`
+2. **Edit the YAML file** with your data
+3. **Validate** that the structure is correct
+4. **Test** the installation instructions
 
-### Méthode directe (JSON) :
-1. **Créer un nouveau fichier JSON** dans ce dossier
-2. **Suivre le schéma** défini dans `schema.json`
-3. **Inclure toutes les sections obligatoires**
-4. **Structurer les technologies** par catégorie
-5. **Fournir des instructions d'installation** complètes
-6. **Ajouter les fichiers de configuration** nécessaires
+### Direct method:
+1. **Create a new YAML file** in this directory
+2. **Follow the schema** defined in the template
+3. **Include all required sections**
+4. **Structure technologies** by category
+5. **Provide complete installation instructions**
+6. **Add necessary configuration files**
 
 ## ✅ Validation
 
-Les tech stacks sont validés contre le schéma JSON et analysés automatiquement par le système MCP (Model Context Protocol) lors de la soumission via Pull Request.
+Tech stacks are automatically analyzed by the MCP (Model Context Protocol) system when submitted via Pull Request.
 
-## 🎯 Avantages du schéma standardisé
+## 🎯 Advantages of the standardized schema
 
-- **Installation automatisée** par IA
-- **Validation automatique** des données
-- **Structure claire** et maintenable
-- **Instructions complètes** d'installation
-- **Fichiers de configuration** inclus
-- **Compatibilité** avec les standards de l'industrie
-- **Édition facile** en YAML
-- **Conversion automatique** vers JSON
+- **Automated installation** by AI
+- **Automatic validation** of data
+- **Clear structure** and maintainable
+- **Complete installation instructions**
+- **Configuration files included**
+- **Industry standards compatibility**
+- **Easy editing** in YAML
+- **Simple maintenance**
