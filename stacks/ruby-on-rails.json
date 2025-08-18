@@ -1,1 +1,156 @@
-{"id":3,"name":"Ruby on Rails + PostgreSQL + Hotwire","description":"Modern full-stack web development framework using Ruby on Rails with PostgreSQL database, Hotwire for real-time features, and Stimulus for JavaScript interactions. Follows convention over configuration and includes testing with RSpec.","category":"Full Stack","version":"7.1.0","documentation_url":"https://guides.rubyonrails.org/","github_url":"https://github.com/rails/rails","npm_package":null,"composer_package":null,"tags":["ruby","rails","postgresql","hotwire","stimulus","rspec","fullstack","mvc","api","testing"],"difficulty_level":"intermediate","estimated_learning_time":"4-6 weeks","prerequisites":["Basic programming concepts","Understanding of MVC pattern","Basic SQL knowledge","Command line familiarity"],"use_cases":["Web applications","APIs","E-commerce platforms","Content management systems","SaaS applications","Internal tools","Startup MVPs"],"pros":["Rapid development with convention over configuration","Excellent testing framework with RSpec","Built-in security features","Active Record ORM for database management","Hotwire for real-time features without JavaScript complexity","Strong community and extensive gem ecosystem","Built-in caching and performance optimizations","Excellent documentation and learning resources","Mature and battle-tested framework","Built-in API development capabilities"],"cons":["Steeper learning curve for beginners","Slower performance compared to compiled languages","Memory usage can be high","Deployment complexity","Ruby ecosystem can be overwhelming","Less popular than JavaScript frameworks","Hosting costs can be higher"],"alternatives":["Django (Python)","Laravel (PHP)","Express.js (Node.js)","Spring Boot (Java)","ASP.NET Core (C#)"],"rating":4.6,"review_count":22,"download_count":750,"is_paid":false,"marketplace_price":0,"contributor":{"id":3,"name":"Rails Expert","email":"rails@promptwebgen.com"},"reviews":[{"id":5,"rating":5,"comment":"Rails is incredibly productive for building web applications. The convention over configuration approach saves so much time!","pros":["Productivity","Testing","Community"],"cons":["Learning curve"],"use_case":"SaaS application","is_verified_purchase":true,"user":{"id":6,"name":"Thomas Leroy"},"created_at":"2024-01-18T09:15:00Z"},{"id":6,"rating":4,"comment":"Great for rapid prototyping and building MVPs. Hotwire makes real-time features so easy to implement.","pros":["Fast development","Hotwire","Active Record"],"cons":["Performance","Memory usage"],"use_case":"Startup MVP","is_verified_purchase":true,"user":{"id":7,"name":"Camille Moreau"},"created_at":"2024-01-16T14:45:00Z"}],"created_at":"2024-01-10T11:30:00Z","updated_at":"2024-01-17T13:20:00Z"}
+{
+  "id": 3,
+  "name": "Ruby on Rails + PostgreSQL + Hotwire",
+  "description": "Modern full-stack web development framework using Ruby on Rails with PostgreSQL database, Hotwire for real-time features, and Stimulus for JavaScript interactions. Follows convention over configuration and includes testing with RSpec.",
+  "category": "Full-Stack",
+  "technologies": {
+    "core": [
+      {
+        "name": "Ruby",
+        "version": "3.2.0",
+        "category": "Language"
+      },
+      {
+        "name": "Ruby on Rails",
+        "version": "7.1.0",
+        "category": "Framework"
+      },
+      {
+        "name": "PostgreSQL",
+        "version": "15.0",
+        "category": "Database"
+      },
+      {
+        "name": "HTML5",
+        "version": "5.0",
+        "category": "Language"
+      },
+      {
+        "name": "CSS3",
+        "version": "3.0",
+        "category": "Language"
+      },
+      {
+        "name": "JavaScript",
+        "version": "ES2022",
+        "category": "Language"
+      }
+    ],
+    "build_tools": [
+      {
+        "name": "Bundler",
+        "version": "2.4.0"
+      },
+      {
+        "name": "Yarn",
+        "version": "1.22.0"
+      },
+      {
+        "name": "Webpacker",
+        "version": "5.4.0"
+      }
+    ],
+    "testing": [
+      {
+        "name": "RSpec",
+        "version": "3.12.0",
+        "type": "Unit"
+      },
+      {
+        "name": "Capybara",
+        "version": "3.39.0",
+        "type": "Integration"
+      },
+      {
+        "name": "FactoryBot",
+        "version": "6.2.0",
+        "type": "Unit"
+      }
+    ],
+    "quality": [
+      {
+        "name": "RuboCop",
+        "version": "1.50.0"
+      },
+      {
+        "name": "Brakeman",
+        "version": "6.1.0"
+      }
+    ]
+  },
+  "setup": {
+    "prerequisites": [
+      "Ruby 3.2.0 or higher",
+      "PostgreSQL 15.0 or higher",
+      "Node.js 18.0.0 or higher",
+      "Yarn 1.22.0 or higher",
+      "Git"
+    ],
+    "installation": [
+      "gem install rails -v 7.1.0",
+      "rails new my-rails-app --database=postgresql --css=tailwind",
+      "cd my-rails-app",
+      "bundle install",
+      "rails db:create",
+      "rails db:migrate",
+      "rails server"
+    ],
+    "configuration": [
+      {
+        "filename": "config/database.yml",
+        "content": "default: &default\n  adapter: postgresql\n  encoding: unicode\n  pool: <%= ENV.fetch(\"RAILS_MAX_THREADS\") { 5 } %>\n\ndevelopment:\n  <<: *default\n  database: my_rails_app_development\n\ntest:\n  <<: *default\n  database: my_rails_app_test\n\nproduction:\n  <<: *default\n  url: <%= ENV['DATABASE_URL'] %>\n",
+        "description": "Database configuration for Rails"
+      },
+      {
+        "filename": "config/application.rb",
+        "content": "require_relative \"boot\"\n\nrequire \"rails/all\"\n\nBundler.require(*Rails.groups)\n\nmodule MyRailsApp\n  class Application < Rails::Application\n    config.load_defaults 7.1\n    \n    config.time_zone = \"UTC\"\n    config.i18n.default_locale = :en\n  end\nend\n",
+        "description": "Rails application configuration"
+      },
+      {
+        "filename": "Gemfile",
+        "content": "source \"https://rubygems.org\"\n\ngem \"rails\", \"~> 7.1.0\"\ngem \"pg\", \"~> 1.1\"\ngem \"puma\", \"~> 6.0\"\ngem \"bootsnap\", require: false\n\ngroup :development, :test do\n  gem \"rspec-rails\"\n  gem \"factory_bot_rails\"\n  gem \"capybara\"\n  gem \"rubocop\", require: false\nend\n\ngroup :development do\n  gem \"web-console\"\n  gem \"brakeman\"\nend\n",
+        "description": "Ruby dependencies for Rails application"
+      }
+    ]
+  },
+  "use_cases": [
+    "Web applications",
+    "APIs",
+    "E-commerce platforms",
+    "Content management systems",
+    "SaaS applications",
+    "Internal tools",
+    "Startup MVPs"
+  ],
+  "tags": [
+    "ruby",
+    "rails",
+    "postgresql",
+    "hotwire",
+    "stimulus",
+    "rspec",
+    "fullstack",
+    "mvc",
+    "api",
+    "testing"
+  ],
+  "documentation": {
+    "official": "https://guides.rubyonrails.org/",
+    "github": "https://github.com/rails/rails"
+  },
+  "contributor": {
+    "name": "Rails Expert",
+    "email": "rails@promptwebgen.com"
+  },
+  "metadata": {
+    "rating": 4.6,
+    "review_count": 22,
+    "download_count": 750,
+    "is_paid": false,
+    "marketplace_price": 0
+  },
+  "timestamps": {
+    "created_at": "2024-01-10T11:30:00Z",
+    "updated_at": "2024-01-17T13:20:00Z"
+  }
+}
