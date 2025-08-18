@@ -45,7 +45,7 @@ use_cases:
   - "Missing closing bracket
 
 tags:
-  - corrupted
+  - corruptedx
   - test
   - broken
   - yaml-error
