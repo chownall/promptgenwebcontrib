@@ -1,0 +1,135 @@
+id: 1
+name: "HTML + JavaScript + Tailwind CSS"
+description: "Modern frontend development stack using HTML5 semantic markup, ES2022 JavaScript with modules, Tailwind CSS for utility-first styling, Vite for build tooling, and comprehensive testing and quality tools."
+category: Frontend
+
+technologies:
+  core:
+    - name: HTML5
+      version: "5.0"
+      category: Language
+    - name: JavaScript
+      version: ES2022
+      category: Language
+    - name: CSS3
+      version: "3.0"
+      category: Language
+    - name: Tailwind CSS
+      version: "3.4.0"
+      category: Framework
+  
+  build_tools:
+    - name: Vite
+      version: "5.0.0"
+    - name: PostCSS
+      version: "8.4.0"
+    - name: Autoprefixer
+      version: "10.4.0"
+  
+  testing:
+    - name: Jest
+      version: "29.7.0"
+      type: Unit
+    - name: Playwright
+      version: "1.40.0"
+      type: E2E
+  
+  quality:
+    - name: ESLint
+      version: "8.57.0"
+    - name: Prettier
+      version: "3.2.0"
+
+setup:
+  prerequisites:
+    - "Node.js 18.0.0 or higher"
+    - "npm 9.0.0 or higher"
+    - Git
+  
+  installation:
+    - "npm create vite@latest my-project -- --template vanilla"
+    - "cd my-project"
+    - "npm install"
+    - "npm install -D tailwindcss postcss autoprefixer"
+    - "npm install -D @typescript-eslint/parser @typescript-eslint/eslint-plugin"
+    - "npm install -D prettier eslint-config-prettier"
+    - "npm install -D jest @types/jest"
+    - "npm install -D @playwright/test"
+    - "npx tailwindcss init -p"
+    - "npx playwright install"
+  
+  configuration:
+    - filename: tailwind.config.js
+      content: |
+        module.exports = {
+          content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+          theme: {
+            extend: {},
+          },
+          plugins: [],
+        }
+      description: "Tailwind CSS configuration file"
+    
+    - filename: vite.config.js
+      content: |
+        import { defineConfig } from 'vite'
+        
+        export default defineConfig({
+          plugins: [],
+          build: {
+            outDir: 'dist',
+          },
+        })
+      description: "Vite build configuration"
+    
+    - filename: .eslintrc.js
+      content: |
+        module.exports = {
+          extends: ['eslint:recommended', '@typescript-eslint/recommended', 'prettier'],
+          parser: '@typescript-eslint/parser',
+          plugins: ['@typescript-eslint'],
+          root: true,
+        }
+      description: "ESLint configuration"
+
+use_cases:
+  - "Static websites"
+  - "Landing pages"
+  - "Portfolios"
+  - "Rapid prototyping"
+  - "Component libraries"
+
+tags:
+  - html5
+  - javascript
+  - es2022
+  - tailwind
+  - css
+  - vite
+  - postcss
+  - typescript
+  - jest
+  - playwright
+  - frontend
+  - responsive
+  - utility-first
+
+documentation:
+  official: "https://tailwindcss.com/docs"
+  github: "https://github.com/tailwindlabs/tailwindcss"
+  npm: "https://www.npmjs.com/package/tailwindcss"
+
+contributor:
+  name: Rivercode
+  email: expert@promptwebgen.com
+
+metadata:
+  rating: 4.8
+  review_count: 15
+  download_count: 1250
+  is_paid: false
+  marketplace_price: 0
+
+timestamps:
+  created_at: "2024-01-01T09:00:00Z"
+  updated_at: "2024-01-15T16:45:00Z"

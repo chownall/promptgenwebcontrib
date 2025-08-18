@@ -84,17 +84,17 @@
     "configuration": [
       {
         "filename": "tailwind.config.js",
-        "content": "module.exports = {\n  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}",
+        "content": "module.exports = {\n  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}\n",
         "description": "Tailwind CSS configuration file"
       },
       {
         "filename": "vite.config.js",
-        "content": "import { defineConfig } from 'vite'\n\nexport default defineConfig({\n  plugins: [],\n  build: {\n    outDir: 'dist',\n  },\n})",
+        "content": "import { defineConfig } from 'vite'\n\nexport default defineConfig({\n  plugins: [],\n  build: {\n    outDir: 'dist',\n  },\n})\n",
         "description": "Vite build configuration"
       },
       {
         "filename": ".eslintrc.js",
-        "content": "module.exports = {\n  extends: ['eslint:recommended', '@typescript-eslint/recommended', 'prettier'],\n  parser: '@typescript-eslint/parser',\n  plugins: ['@typescript-eslint'],\n  root: true,\n}",
+        "content": "module.exports = {\n  extends: ['eslint:recommended', '@typescript-eslint/recommended', 'prettier'],\n  parser: '@typescript-eslint/parser',\n  plugins: ['@typescript-eslint'],\n  root: true,\n}\n",
         "description": "ESLint configuration"
       }
     ]

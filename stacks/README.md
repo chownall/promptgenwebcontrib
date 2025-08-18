@@ -1,6 +1,26 @@
 # Tech Stacks Repository
 
-Ce dossier contient les tech stacks disponibles pour l'extension PromptWebGen, suivant un schéma JSON standardisé basé sur les normes de l'industrie.
+Ce dossier contient les tech stacks disponibles pour l'extension PromptWebGen, suivant un schéma standardisé basé sur les normes de l'industrie.
+
+## 📋 Formats supportés
+
+### 🟢 **YAML (Recommandé pour l'édition)**
+- **Plus facile à éditer** manuellement
+- **Syntaxe claire** et lisible
+- **Moins d'erreurs** de syntaxe
+- **Fichiers** : `*.yaml`
+
+### 🔵 **JSON (Pour l'API)**
+- **Format standard** pour les APIs
+- **Validation automatique** avec le schéma
+- **Fichiers** : `*.json`
+
+## 🔄 Conversion automatique
+
+Utilisez le script Python pour convertir YAML → JSON :
+```bash
+python convert-yaml-to-json.py stacks/*.yaml
+```
 
 ## 📋 Schéma JSON Standardisé
 
@@ -15,38 +35,41 @@ Chaque tech stack suit le schéma défini dans `schema.json` qui respecte les st
 - **setup** : Instructions d'installation et configuration
 
 ### Technologies structurées :
-```json
-"technologies": {
-  "core": [
-    {
-      "name": "Technology Name",
-      "version": "1.0.0",
-      "category": "Language|Framework|Library|Database|Tool|Service"
-    }
-  ],
-  "build_tools": [...],
-  "testing": [...],
-  "quality": [...]
-}
+```yaml
+technologies:
+  core:
+    - name: "Technology Name"
+      version: "1.0.0"
+      category: "Language|Framework|Library|Database|Tool|Service"
+  build_tools: [...]
+  testing: [...]
+  quality: [...]
 ```
 
 ### Setup automatisé :
-```json
-"setup": {
-  "prerequisites": ["Node.js 18+", "npm"],
-  "installation": ["npm install", "npm run dev"],
-  "configuration": [
-    {
-      "filename": "config.js",
-      "content": "// Configuration content",
-      "description": "Description du fichier"
-    }
-  ]
-}
+```yaml
+setup:
+  prerequisites:
+    - "Node.js 18+"
+    - "npm"
+  installation:
+    - "npm install"
+    - "npm run dev"
+  configuration:
+    - filename: "config.js"
+      content: "// Configuration content"
+      description: "Description du fichier"
 ```
 
 ## 🚀 Ajout d'un nouveau tech stack
 
+### Méthode recommandée (YAML) :
+1. **Copier le template** : `cp template.yaml ma-nouvelle-stack.yaml`
+2. **Éditer le fichier YAML** avec vos données
+3. **Convertir en JSON** : `python convert-yaml-to-json.py ma-nouvelle-stack.yaml`
+4. **Valider** que le JSON est conforme au schéma
+
+### Méthode directe (JSON) :
 1. **Créer un nouveau fichier JSON** dans ce dossier
 2. **Suivre le schéma** défini dans `schema.json`
 3. **Inclure toutes les sections obligatoires**
@@ -62,6 +85,9 @@ Les tech stacks sont validés contre le schéma JSON et analysés automatiquemen
 
 - **Installation automatisée** par IA
 - **Validation automatique** des données
+- **Structure claire** et maintenable
+- **Instructions complètes** d'installation
+- **Fichiers de configuration** inclus
 - **Compatibilité** avec les standards de l'industrie
-- **Documentation claire** et structurée
-- **Facilité de maintenance** et d'évolution
+- **Édition facile** en YAML
+- **Conversion automatique** vers JSON
