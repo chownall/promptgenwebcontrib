@@ -1,7 +1,7 @@
 {
   "id": 1,
   "name": "HTML + JavaScript + Tailwind CSS",
-  "description": "Modern frontend development stack using HTML5 semantic markup, ES2022 JavaScript with modules, Tailwind CSS for utility-first styling, Vite for build tooling, and comprehensive testing and quality tools.",
+  "description": "Complete modern frontend development stack using HTML5 semantic markup, ES2022 JavaScript with modules, Tailwind CSS for utility-first styling, Vite for build tooling, TypeScript for type safety, and comprehensive testing and quality tools including Jest, Playwright, ESLint, and Prettier.",
   "category": "Frontend",
   "technologies": {
     "core": [
@@ -18,6 +18,11 @@
       {
         "name": "CSS3",
         "version": "3.0",
+        "category": "Language"
+      },
+      {
+        "name": "TypeScript",
+        "version": "5.3.0",
         "category": "Language"
       },
       {
@@ -38,6 +43,10 @@
       {
         "name": "Autoprefixer",
         "version": "10.4.0"
+      },
+      {
+        "name": "TypeScript Compiler",
+        "version": "5.3.0"
       }
     ],
     "testing": [
@@ -50,6 +59,11 @@
         "name": "Playwright",
         "version": "1.40.0",
         "type": "E2E"
+      },
+      {
+        "name": "Testing Library",
+        "version": "14.0.0",
+        "type": "Unit"
       }
     ],
     "quality": [
@@ -60,6 +74,18 @@
       {
         "name": "Prettier",
         "version": "3.2.0"
+      },
+      {
+        "name": "TypeScript ESLint",
+        "version": "6.0.0"
+      },
+      {
+        "name": "Husky",
+        "version": "8.0.0"
+      },
+      {
+        "name": "lint-staged",
+        "version": "15.0.0"
       }
     ]
   },
@@ -67,35 +93,66 @@
     "prerequisites": [
       "Node.js 18.0.0 or higher",
       "npm 9.0.0 or higher",
-      "Git"
+      "Git",
+      "Modern web browser"
     ],
     "installation": [
-      "npm create vite@latest my-project -- --template vanilla",
+      "npm create vite@latest my-project -- --template vanilla-ts",
       "cd my-project",
       "npm install",
       "npm install -D tailwindcss postcss autoprefixer",
+      "npm install -D typescript @types/node",
       "npm install -D @typescript-eslint/parser @typescript-eslint/eslint-plugin",
       "npm install -D prettier eslint-config-prettier",
-      "npm install -D jest @types/jest",
+      "npm install -D jest @types/jest ts-jest",
       "npm install -D @playwright/test",
+      "npm install -D @testing-library/jest-dom",
+      "npm install -D husky lint-staged",
       "npx tailwindcss init -p",
-      "npx playwright install"
+      "npx playwright install",
+      "npx husky install",
+      "npx husky add .husky/pre-commit 'npx lint-staged'"
     ],
     "configuration": [
       {
         "filename": "tailwind.config.js",
-        "content": "module.exports = {\n  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n}\n",
-        "description": "Tailwind CSS configuration file"
+        "content": "/** @type {import('tailwindcss').Config} */\nmodule.exports = {\n  content: [\n    './index.html',\n    './src/**/*.{js,ts,jsx,tsx}',\n  ],\n  theme: {\n    extend: {\n      colors: {\n        primary: {\n          50: '#eff6ff',\n          500: '#3b82f6',\n          900: '#1e3a8a',\n        }\n      },\n      fontFamily: {\n        sans: ['Inter', 'system-ui', 'sans-serif'],\n      }\n    },\n  },\n  plugins: [],\n}\n",
+        "description": "Tailwind CSS configuration with custom theme"
       },
       {
-        "filename": "vite.config.js",
-        "content": "import { defineConfig } from 'vite'\n\nexport default defineConfig({\n  plugins: [],\n  build: {\n    outDir: 'dist',\n  },\n})\n",
-        "description": "Vite build configuration"
+        "filename": "vite.config.ts",
+        "content": "import { defineConfig } from 'vite'\n\nexport default defineConfig({\n  plugins: [],\n  build: {\n    outDir: 'dist',\n    sourcemap: true,\n  },\n  server: {\n    port: 3000,\n    open: true,\n  },\n})\n",
+        "description": "Vite build configuration with TypeScript"
+      },
+      {
+        "filename": "tsconfig.json",
+        "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"useDefineForClassFields\": true,\n    \"lib\": [\"ES2020\", \"DOM\", \"DOM.Iterable\"],\n    \"module\": \"ESNext\",\n    \"skipLibCheck\": true,\n    \"moduleResolution\": \"bundler\",\n    \"allowImportingTsExtensions\": true,\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"noEmit\": true,\n    \"jsx\": \"preserve\",\n    \"strict\": true,\n    \"noUnusedLocals\": true,\n    \"noUnusedParameters\": true,\n    \"noFallthroughCasesInSwitch\": true\n  },\n  \"include\": [\"src\"],\n  \"references\": [{ \"path\": \"./tsconfig.node.json\" }]\n}\n",
+        "description": "TypeScript configuration"
       },
       {
         "filename": ".eslintrc.js",
-        "content": "module.exports = {\n  extends: ['eslint:recommended', '@typescript-eslint/recommended', 'prettier'],\n  parser: '@typescript-eslint/parser',\n  plugins: ['@typescript-eslint'],\n  root: true,\n}\n",
-        "description": "ESLint configuration"
+        "content": "module.exports = {\n  root: true,\n  env: {\n    browser: true,\n    es2020: true,\n    node: true,\n  },\n  extends: [\n    'eslint:recommended',\n    '@typescript-eslint/recommended',\n    'prettier'\n  ],\n  parser: '@typescript-eslint/parser',\n  parserOptions: {\n    ecmaVersion: 'latest',\n    sourceType: 'module',\n  },\n  plugins: ['@typescript-eslint'],\n  rules: {\n    '@typescript-eslint/no-unused-vars': 'error',\n    '@typescript-eslint/no-explicit-any': 'warn',\n  },\n}\n",
+        "description": "ESLint configuration with TypeScript support"
+      },
+      {
+        "filename": ".prettierrc",
+        "content": "{\n  \"semi\": true,\n  \"trailingComma\": \"es5\",\n  \"singleQuote\": true,\n  \"printWidth\": 80,\n  \"tabWidth\": 2,\n  \"useTabs\": false\n}\n",
+        "description": "Prettier configuration"
+      },
+      {
+        "filename": "jest.config.js",
+        "content": "module.exports = {\n  preset: 'ts-jest',\n  testEnvironment: 'jsdom',\n  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],\n  moduleNameMapping: {\n    '^@/(.*)$': '<rootDir>/src/$1',\n  },\n  collectCoverageFrom: [\n    'src/**/*.{js,ts,jsx,tsx}',\n    '!src/**/*.d.ts',\n  ],\n}\n",
+        "description": "Jest configuration for TypeScript"
+      },
+      {
+        "filename": "playwright.config.ts",
+        "content": "import { defineConfig, devices } from '@playwright/test';\n\nexport default defineConfig({\n  testDir: './tests',\n  fullyParallel: true,\n  forbidOnly: !!process.env.CI,\n  retries: process.env.CI ? 2 : 0,\n  workers: process.env.CI ? 1 : undefined,\n  reporter: 'html',\n  use: {\n    baseURL: 'http://localhost:3000',\n    trace: 'on-first-retry',\n  },\n  projects: [\n    {\n      name: 'chromium',\n      use: { ...devices['Desktop Chrome'] },\n    },\n    {\n      name: 'firefox',\n      use: { ...devices['Desktop Firefox'] },\n    },\n    {\n      name: 'webkit',\n      use: { ...devices['Desktop Safari'] },\n    },\n  ],\n  webServer: {\n    command: 'npm run dev',\n    url: 'http://localhost:3000',\n    reuseExistingServer: !process.env.CI,\n  },\n});\n",
+        "description": "Playwright configuration for E2E testing"
+      },
+      {
+        "filename": "lint-staged.config.js",
+        "content": "module.exports = {\n  '*.{js,ts,jsx,tsx}': [\n    'eslint --fix',\n    'prettier --write',\n  ],\n  '*.{css,scss,md,json}': [\n    'prettier --write',\n  ],\n}\n",
+        "description": "lint-staged configuration for pre-commit hooks"
       }
     ]
   },
@@ -104,27 +161,35 @@
     "Landing pages",
     "Portfolios",
     "Rapid prototyping",
-    "Component libraries"
+    "Component libraries",
+    "Single Page Applications",
+    "Progressive Web Apps",
+    "Design systems"
   ],
   "tags": [
     "html5",
     "javascript",
     "es2022",
+    "typescript",
     "tailwind",
     "css",
     "vite",
     "postcss",
-    "typescript",
     "jest",
     "playwright",
+    "eslint",
+    "prettier",
     "frontend",
     "responsive",
-    "utility-first"
+    "utility-first",
+    "modern"
   ],
   "documentation": {
     "official": "https://tailwindcss.com/docs",
     "github": "https://github.com/tailwindlabs/tailwindcss",
-    "npm": "https://www.npmjs.com/package/tailwindcss"
+    "npm": "https://www.npmjs.com/package/tailwindcss",
+    "vite": "https://vitejs.dev/guide/",
+    "typescript": "https://www.typescriptlang.org/docs/"
   },
   "contributor": {
     "name": "Rivercode",
@@ -135,7 +200,9 @@
     "review_count": 15,
     "download_count": 1250,
     "is_paid": false,
-    "marketplace_price": 0
+    "marketplace_price": 0,
+    "license": "MIT",
+    "status": "Active"
   },
   "timestamps": {
     "created_at": "2024-01-01T09:00:00Z",
