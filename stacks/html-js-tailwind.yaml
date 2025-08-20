@@ -1,5 +1,5 @@
 id: 1
-name: "HTML + JavaScript + Tailwind CSSok"
+name: "HTML + JavaScript + Tailwind CSS"
 description: "Complete modern frontend development stack using HTML5 semantic markup, ES2022 JavaScript with modules, Tailwind CSS for utility-first styling, Vite for build tooling, TypeScript for type safety, and comprehensive testing and quality tools including Jest, Playwright, ESLint, and Prettier."
 category: Frontend
 
